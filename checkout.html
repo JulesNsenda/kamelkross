@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Checkout - Kamel Kross">
+    <title>Checkout | Kamel Kross</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Paystack -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐪</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Kamel Kross</a>
+
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="nav-link nav-dropdown-toggle">
+                            Shop
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="products.html">All Products</a>
+                            <a href="products.html?category=t-shirts">T-Shirts</a>
+                            <a href="products.html?category=caps">Caps</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="checkout-page">
+        <div class="container">
+            <h1 style="margin-bottom: var(--space-2xl);">Checkout</h1>
+
+            <!-- Empty Cart Redirect -->
+            <div id="checkout-empty" class="cart-empty" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <h3>Your cart is empty</h3>
+                <p>Add some items to your cart before checking out.</p>
+                <a href="products.html" class="btn btn-primary">Start Shopping</a>
+            </div>
+
+            <!-- Checkout Content -->
+            <div id="checkout-content" class="checkout-grid">
+                <!-- Checkout Form -->
+                <form id="checkout-form" class="checkout-form">
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h3>Contact Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+27 XX XXX XXXX" required>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div class="form-section">
+                        <h3>Shipping Address</h3>
+                        <div class="form-group">
+                            <label for="address">Street Address *</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="state">Province *</label>
+                                <select id="state" name="state" required>
+                                    <option value="">Select Province</option>
+                                    <option value="Eastern Cape">Eastern Cape</option>
+                                    <option value="Free State">Free State</option>
+                                    <option value="Gauteng">Gauteng</option>
+                                    <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                                    <option value="Limpopo">Limpopo</option>
+                                    <option value="Mpumalanga">Mpumalanga</option>
+                                    <option value="North West">North West</option>
+                                    <option value="Northern Cape">Northern Cape</option>
+                                    <option value="Western Cape">Western Cape</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Order Notes (Optional)</label>
+                            <textarea id="notes" name="notes" rows="3" placeholder="Any special instructions for delivery..."></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Payment Notice -->
+                    <div class="form-section">
+                        <h3>Payment</h3>
+                        <div style="background: var(--bg-light); padding: var(--space-lg); border-radius: var(--radius-md); display: flex; align-items: center; gap: var(--space-md);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--primary)">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                            <div>
+                                <p style="font-weight: 600; margin-bottom: 4px;">Secure Payment via Paystack</p>
+                                <p style="font-size: var(--font-size-sm); color: var(--text-secondary);">Pay with card, bank transfer, or USSD. Your payment details are secure.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="pay-btn" class="btn btn-primary btn-lg" style="width: 100%;">
+                        Pay <span id="pay-amount">R0</span>
+                    </button>
+                </form>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+
+                    <div id="order-items" class="order-items">
+                        <!-- Items loaded via JavaScript -->
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="summary-subtotal">R0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span id="summary-shipping">R0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="summary-total">R0</span>
+                    </div>
+
+                    <a href="cart.html" class="btn btn-ghost" style="width: 100%; margin-top: var(--space-lg);">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="margin-right: 8px;">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                        Edit Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">Kamel Kross</span>
+                    <p>Premium streetwear and branded apparel. Express yourself with confidence.</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html?category=t-shirts">T-Shirts</a></li>
+                        <li><a href="products.html?category=caps">Caps</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li id="contact-email">hello@kamelkross.com</li>
+                        <li id="contact-phone">+234 XXX XXX XXXX</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Kamel Kross. All rights reserved.</p>
+                <a href="https://techamat.com" target="_blank" rel="noopener" style="font-size: var(--font-size-xs); color: var(--text-muted); transition: color 0.2s;">Developed by Techamat</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+        // Update year and contact
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('contact-email').textContent = CONFIG.contact.email;
+        document.getElementById('contact-phone').textContent = CONFIG.contact.phone;
+
+        // Checkout Page Controller
+        const CheckoutPage = {
+            init() {
+                // Check if cart is empty
+                if (Cart.isEmpty()) {
+                    document.getElementById('checkout-content').style.display = 'none';
+                    document.getElementById('checkout-empty').style.display = 'block';
+                    return;
+                }
+
+                this.renderOrderSummary();
+                this.setupForm();
+            },
+
+            renderOrderSummary() {
+                // Render items
+                const itemsContainer = document.getElementById('order-items');
+                itemsContainer.innerHTML = Cart.items.map(item => Cart.renderOrderItem(item)).join('');
+
+                // Update totals
+                document.getElementById('summary-subtotal').textContent = Products.formatPrice(Cart.getSubtotal());
+                document.getElementById('summary-shipping').textContent = Products.formatPrice(Cart.getShipping());
+                document.getElementById('summary-total').textContent = Products.formatPrice(Cart.getTotal());
+                document.getElementById('pay-amount').textContent = Products.formatPrice(Cart.getTotal());
+            },
+
+            setupForm() {
+                const form = document.getElementById('checkout-form');
+
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    // Validate form
+                    if (!this.validateForm()) {
+                        return;
+                    }
+
+                    // Get customer info
+                    const customerInfo = {
+                        firstName: document.getElementById('firstName').value.trim(),
+                        lastName: document.getElementById('lastName').value.trim(),
+                        email: document.getElementById('email').value.trim(),
+                        phone: document.getElementById('phone').value.trim(),
+                        address: document.getElementById('address').value.trim(),
+                        city: document.getElementById('city').value.trim(),
+                        state: document.getElementById('state').value,
+                        notes: document.getElementById('notes').value.trim()
+                    };
+
+                    // Process payment
+                    this.processPayment(customerInfo);
+                });
+            },
+
+            validateForm() {
+                let isValid = true;
+
+                // Clear previous errors
+                document.querySelectorAll('.form-group.error').forEach(g => g.classList.remove('error'));
+                document.querySelectorAll('.form-error').forEach(e => e.remove());
+
+                // Required fields
+                const required = ['firstName', 'lastName', 'email', 'phone', 'address', 'city', 'state'];
+
+                required.forEach(field => {
+                    const input = document.getElementById(field);
+                    const value = input.value.trim();
+
+                    if (!value) {
+                        this.showFieldError(input, 'This field is required');
+                        isValid = false;
+                    }
+                });
+
+                // Email validation
+                const email = document.getElementById('email');
+                if (email.value && !UI.isValidEmail(email.value)) {
+                    this.showFieldError(email, 'Please enter a valid email');
+                    isValid = false;
+                }
+
+                // Phone validation
+                const phone = document.getElementById('phone');
+                if (phone.value && !UI.isValidPhone(phone.value)) {
+                    this.showFieldError(phone, 'Please enter a valid South African phone number');
+                    isValid = false;
+                }
+
+                return isValid;
+            },
+
+            showFieldError(input, message) {
+                const group = input.closest('.form-group');
+                group.classList.add('error');
+
+                const error = document.createElement('p');
+                error.className = 'form-error';
+                error.textContent = message;
+                group.appendChild(error);
+            },
+
+            processPayment(customerInfo) {
+                const btn = document.getElementById('pay-btn');
+                btn.disabled = true;
+                btn.textContent = 'Processing...';
+
+                // Generate reference
+                const reference = UI.generateId('KK');
+
+                // Prepare order data for Paystack metadata
+                const orderData = Cart.prepareOrderData(customerInfo);
+
+                // Initialize Paystack
+                const handler = PaystackPop.setup({
+                    key: CONFIG.paystack.publicKey,
+                    email: customerInfo.email,
+                    amount: Cart.getTotal() * 100, // Paystack uses cents
+                    currency: 'ZAR',
+                    ref: reference,
+                    metadata: {
+                        custom_fields: [
+                            {
+                                display_name: "Customer Name",
+                                variable_name: "customer_name",
+                                value: `${customerInfo.firstName} ${customerInfo.lastName}`
+                            },
+                            {
+                                display_name: "Phone",
+                                variable_name: "phone",
+                                value: customerInfo.phone
+                            },
+                            {
+                                display_name: "Shipping Address",
+                                variable_name: "shipping_address",
+                                value: `${customerInfo.address}, ${customerInfo.city}, ${customerInfo.state}`
+                            },
+                            {
+                                display_name: "Order Notes",
+                                variable_name: "order_notes",
+                                value: customerInfo.notes || 'None'
+                            }
+                        ],
+                        order_items: orderData.items.map(item =>
+                            `${item.name} (${item.size}/${item.color}) x${item.quantity}`
+                        ).join(', ')
+                    },
+                    callback: (response) => {
+                        // Payment successful
+                        console.log('Payment successful:', response);
+
+                        // Store order reference for success page
+                        sessionStorage.setItem('kamelkross_order', JSON.stringify({
+                            reference: response.reference,
+                            customer: customerInfo,
+                            items: Cart.items,
+                            total: Cart.getTotal()
+                        }));
+
+                        // Clear cart
+                        Cart.clear();
+
+                        // Redirect to success page
+                        window.location.href = `success.html?ref=${response.reference}`;
+                    },
+                    onClose: () => {
+                        // Payment cancelled
+                        btn.disabled = false;
+                        btn.innerHTML = `Pay <span id="pay-amount">${Products.formatPrice(Cart.getTotal())}</span>`;
+                        UI.toast('Payment cancelled', 'warning');
+                    }
+                });
+
+                handler.openIframe();
+            }
+        };
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            Products.fetch().then(() => {
+                CheckoutPage.init();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop Kamel Kross premium streetwear">
+    <title>Product | Kamel Kross</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐪</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">Kamel Kross</a>
+
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="nav-link nav-dropdown-toggle">
+                            Shop
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="products.html">All Products</a>
+                            <a href="products.html?category=t-shirts">T-Shirts</a>
+                            <a href="products.html?category=caps">Caps</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="product-detail">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <nav class="breadcrumb" style="justify-content: flex-start; margin-bottom: var(--space-xl);">
+                <a href="index.html">Home</a>
+                <span>/</span>
+                <a href="products.html">Shop</a>
+                <span>/</span>
+                <span id="breadcrumb-product">Product</span>
+            </nav>
+
+            <!-- Loading State -->
+            <div id="product-loading" class="loading">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Product Not Found -->
+            <div id="product-not-found" class="cart-empty" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3>Product Not Found</h3>
+                <p>The product you're looking for doesn't exist or has been removed.</p>
+                <a href="products.html" class="btn btn-primary">Browse Products</a>
+            </div>
+
+            <!-- Product Content -->
+            <div id="product-content" class="product-detail-grid" style="display: none;">
+                <!-- Gallery -->
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img id="main-image" src="" alt="">
+                    </div>
+                    <div id="product-thumbnails" class="product-thumbnails">
+                        <!-- Thumbnails loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Details -->
+                <div class="product-details">
+                    <span id="product-category" class="product-category"></span>
+                    <h1 id="product-name"></h1>
+                    <p id="product-price" class="product-price"></p>
+                    <p id="product-description" class="product-description"></p>
+
+                    <!-- Options -->
+                    <div class="product-options">
+                        <!-- Size Selection -->
+                        <div id="size-group" class="option-group">
+                            <label class="option-label">Size</label>
+                            <div id="size-options" class="option-values">
+                                <!-- Sizes loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Color Selection -->
+                        <div id="color-group" class="option-group">
+                            <label class="option-label">Color</label>
+                            <div id="color-options" class="option-values">
+                                <!-- Colors loaded dynamically -->
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="option-group">
+                            <label class="option-label">Quantity</label>
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" id="qty-minus">-</button>
+                                <span class="quantity-value" id="qty-value">1</span>
+                                <button class="quantity-btn" id="qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Actions -->
+                    <div class="product-actions-detail">
+                        <button id="add-to-cart" class="btn btn-primary btn-lg">Add to Cart</button>
+                    </div>
+
+                    <!-- Meta -->
+                    <div class="product-meta">
+                        <div class="product-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                            </svg>
+                            <span>Free shipping on orders over R1,500</span>
+                        </div>
+                        <div class="product-meta-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            <span>Easy returns within 7 days</span>
+                        </div>
+                        <div class="product-meta-item" id="shipping-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Shipping: <span id="shipping-cost">R0</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Related Products Section -->
+    <section id="related-section" class="section" style="display: none;">
+        <div class="container">
+            <div class="section-header-flex">
+                <div>
+                    <h2>You May Also Like</h2>
+                    <p>Similar products you might enjoy</p>
+                </div>
+            </div>
+            <div id="related-products" class="products-grid">
+                <!-- Related products loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <span class="logo">Kamel Kross</span>
+                    <p>Premium streetwear and branded apparel. Express yourself with confidence.</p>
+                    <div class="social-links" style="margin-top: var(--space-lg);">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html?category=t-shirts">T-Shirts</a></li>
+                        <li><a href="products.html?category=caps">Caps</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Help</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li id="contact-email">hello@kamelkross.com</li>
+                        <li id="contact-phone">+234 XXX XXX XXXX</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year">2024</span> Kamel Kross. All rights reserved.</p>
+                <div class="payment-methods">
+                    <a href="https://techamat.com" target="_blank" rel="noopener" style="font-size: var(--font-size-xs); color: var(--text-muted); transition: color 0.2s;">Developed by Techamat</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/ui.js"></script>
+    <script>
+        // Update year and contact
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        document.getElementById('contact-email').textContent = CONFIG.contact.email;
+        document.getElementById('contact-phone').textContent = CONFIG.contact.phone;
+
+        // Page state
+        let currentProduct = null;
+        let selectedSize = null;
+        let selectedColor = null;
+        let quantity = 1;
+
+        // Get product ID from URL
+        const params = UI.getUrlParams();
+        const productId = params.get('id');
+
+        // Color name to hex mapping (for color swatches)
+        const colorMap = {
+            'black': '#000000',
+            'white': '#FFFFFF',
+            'navy': '#1a237e',
+            'grey': '#757575',
+            'gray': '#757575',
+            'khaki': '#c3b091',
+            'olive': '#556b2f',
+            'red': '#e53935',
+            'blue': '#1976d2',
+            'green': '#388e3c',
+            'yellow': '#fdd835',
+            'orange': '#fb8c00',
+            'purple': '#7b1fa2',
+            'pink': '#e91e63',
+            'brown': '#795548',
+            'black/white': 'linear-gradient(135deg, #000 50%, #fff 50%)',
+            'navy/white': 'linear-gradient(135deg, #1a237e 50%, #fff 50%)'
+        };
+
+        // Initialize page
+        async function initProductPage() {
+            if (!productId) {
+                showNotFound();
+                return;
+            }
+
+            await Products.fetch();
+            currentProduct = Products.getById(productId);
+
+            if (!currentProduct) {
+                showNotFound();
+                return;
+            }
+
+            renderProduct();
+            loadRelatedProducts();
+            setupEventListeners();
+        }
+
+        // Show not found state
+        function showNotFound() {
+            document.getElementById('product-loading').style.display = 'none';
+            document.getElementById('product-not-found').style.display = 'block';
+        }
+
+        // Render product details
+        function renderProduct() {
+            const p = currentProduct;
+
+            // Update page title
+            document.title = `${p.name} | Kamel Kross`;
+
+            // Update breadcrumb
+            document.getElementById('breadcrumb-product').textContent = p.name;
+
+            // Main image
+            const mainImage = document.getElementById('main-image');
+            mainImage.src = Products.convertGoogleDriveUrl(p.image);
+            mainImage.alt = p.name;
+
+            // Thumbnails
+            const thumbnailsContainer = document.getElementById('product-thumbnails');
+            const allImages = [p.image, ...(p.images || [])].filter((v, i, a) => a.indexOf(v) === i);
+
+            if (allImages.length > 1) {
+                thumbnailsContainer.innerHTML = allImages.map((img, i) => `
+                    <button class="product-thumbnail ${i === 0 ? 'active' : ''}" data-image="${Products.convertGoogleDriveUrl(img)}">
+                        <img src="${Products.convertGoogleDriveUrl(img)}" alt="${p.name}">
+                    </button>
+                `).join('');
+            } else {
+                thumbnailsContainer.style.display = 'none';
+            }
+
+            // Product info
+            document.getElementById('product-category').textContent = p.category || '';
+            document.getElementById('product-name').textContent = p.name;
+            document.getElementById('product-price').textContent = Products.formatPrice(p.price);
+            document.getElementById('product-description').textContent = p.description || '';
+
+            // Shipping
+            document.getElementById('shipping-cost').textContent = p.shipping > 0
+                ? Products.formatPrice(p.shipping)
+                : 'Free';
+
+            // Sizes
+            const sizeGroup = document.getElementById('size-group');
+            const sizeOptions = document.getElementById('size-options');
+            if (p.sizes && p.sizes.length > 0) {
+                sizeOptions.innerHTML = p.sizes.map((size, i) => `
+                    <button class="option-btn ${i === 0 ? 'selected' : ''}" data-size="${size}">${size}</button>
+                `).join('');
+                selectedSize = p.sizes[0];
+            } else {
+                sizeGroup.style.display = 'none';
+                selectedSize = 'One Size';
+            }
+
+            // Colors
+            const colorGroup = document.getElementById('color-group');
+            const colorOptions = document.getElementById('color-options');
+            if (p.colors && p.colors.length > 0) {
+                colorOptions.innerHTML = p.colors.map((color, i) => {
+                    const colorValue = colorMap[color.toLowerCase()] || '#888';
+                    const isGradient = colorValue.includes('gradient');
+                    return `
+                        <button class="option-btn color-swatch ${i === 0 ? 'selected' : ''}"
+                                data-color="${color}"
+                                style="background: ${colorValue}; ${isGradient ? '' : 'border-color: ' + colorValue}"
+                                title="${color}">
+                        </button>
+                    `;
+                }).join('');
+                selectedColor = p.colors[0];
+            } else {
+                colorGroup.style.display = 'none';
+                selectedColor = 'Default';
+            }
+
+            // Show content
+            document.getElementById('product-loading').style.display = 'none';
+            document.getElementById('product-content').style.display = 'grid';
+        }
+
+        // Load related products
+        function loadRelatedProducts() {
+            const relatedSection = document.getElementById('related-section');
+            const relatedContainer = document.getElementById('related-products');
+
+            // Get products from same category, excluding current
+            const related = Products.getByCategory(currentProduct.category)
+                .filter(p => p.id !== currentProduct.id)
+                .slice(0, 4);
+
+            if (related.length > 0) {
+                relatedContainer.innerHTML = related.map(p => Products.renderCard(p)).join('');
+                relatedSection.style.display = 'block';
+            }
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Thumbnail clicks
+            document.getElementById('product-thumbnails').addEventListener('click', (e) => {
+                const thumb = e.target.closest('.product-thumbnail');
+                if (thumb) {
+                    document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                    thumb.classList.add('active');
+                    document.getElementById('main-image').src = thumb.dataset.image;
+                }
+            });
+
+            // Size selection
+            document.getElementById('size-options').addEventListener('click', (e) => {
+                if (e.target.classList.contains('option-btn')) {
+                    document.querySelectorAll('#size-options .option-btn').forEach(btn => btn.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    selectedSize = e.target.dataset.size;
+                }
+            });
+
+            // Color selection
+            document.getElementById('color-options').addEventListener('click', (e) => {
+                if (e.target.classList.contains('option-btn')) {
+                    document.querySelectorAll('#color-options .option-btn').forEach(btn => btn.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    selectedColor = e.target.dataset.color;
+                }
+            });
+
+            // Quantity buttons
+            document.getElementById('qty-minus').addEventListener('click', () => {
+                if (quantity > 1) {
+                    quantity--;
+                    document.getElementById('qty-value').textContent = quantity;
+                }
+            });
+
+            document.getElementById('qty-plus').addEventListener('click', () => {
+                if (quantity < 10) {
+                    quantity++;
+                    document.getElementById('qty-value').textContent = quantity;
+                }
+            });
+
+            // Add to cart
+            document.getElementById('add-to-cart').addEventListener('click', () => {
+                if (!selectedSize) {
+                    UI.toast('Please select a size', 'error');
+                    return;
+                }
+                if (!selectedColor && currentProduct.colors && currentProduct.colors.length > 0) {
+                    UI.toast('Please select a color', 'error');
+                    return;
+                }
+
+                Cart.add(currentProduct, selectedSize, selectedColor || 'Default', quantity);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', initProductPage);
+    </script>
+</body>
+</html>
