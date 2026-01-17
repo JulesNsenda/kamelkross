@@ -26,8 +26,8 @@ const UI = {
                 toggle.classList.toggle('active');
             });
 
-            // Close menu when clicking a link
-            navLinks.querySelectorAll('.nav-link').forEach(link => {
+            // Close menu when clicking any link (including dropdown items)
+            navLinks.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
                     toggle.classList.remove('active');
