@@ -411,7 +411,8 @@ h6 { font-size: var(--font-size-lg); }
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--bg-dark);
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(10px);
         flex-direction: column;
         align-items: center;
         justify-content: center;
