@@ -28,7 +28,7 @@ const CONFIG = {
 
     // Contact Information
     contact: {
-        email: 'hello@kamelkross.co.za',
+        email: 'hello@kamelkross.com',
         phone: '+27 XX XXX XXXX',
         instagram: '@kamelkross',
         twitter: '@kamelkross'
