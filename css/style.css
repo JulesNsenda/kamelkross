@@ -1918,3 +1918,307 @@ body.page-leaving {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* ============================================
+   CONTENT PAGES (Shipping, Returns, etc.)
+   ============================================ */
+.content-page {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content-section {
+    margin-bottom: var(--space-3xl);
+}
+
+.content-section h2 {
+    color: var(--charcoal);
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--red);
+    display: inline-block;
+}
+
+.content-section p {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+.content-section a {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+.content-section a:hover {
+    color: var(--red-hover);
+}
+
+.content-list {
+    margin: var(--space-lg) 0;
+    padding-left: var(--space-xl);
+}
+
+.content-list li {
+    color: var(--text-light);
+    line-height: 1.8;
+    margin-bottom: var(--space-sm);
+    position: relative;
+}
+
+.content-list:not(.numbered) li::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    background: var(--red);
+    border-radius: 50%;
+}
+
+.content-list.numbered {
+    list-style: decimal;
+}
+
+.content-list.numbered li {
+    padding-left: var(--space-sm);
+}
+
+.content-list.numbered li::marker {
+    color: var(--red);
+    font-weight: 600;
+}
+
+.note {
+    background: var(--off-white);
+    padding: var(--space-md);
+    border-left: 3px solid var(--red);
+    font-size: 14px;
+    margin-top: var(--space-lg);
+}
+
+/* Info Cards */
+.info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.info-card {
+    background: var(--off-white);
+    padding: var(--space-xl);
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.info-card h4 {
+    color: var(--charcoal);
+    margin-bottom: var(--space-sm);
+    font-size: 14px;
+}
+
+.info-card .highlight {
+    color: var(--red);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-display);
+    margin-bottom: var(--space-xs);
+}
+
+.info-card p:last-child {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-bottom: 0;
+}
+
+/* Measure Tips */
+.measure-tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    margin: var(--space-xl) 0;
+}
+
+.measure-tip {
+    padding: var(--space-lg);
+    background: var(--off-white);
+    border: 1px solid var(--border);
+}
+
+.measure-tip h4 {
+    color: var(--red);
+    margin-bottom: var(--space-sm);
+}
+
+.measure-tip p {
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+/* Size Table */
+.table-wrapper {
+    overflow-x: auto;
+    margin: var(--space-xl) 0;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 400px;
+}
+
+.size-table th,
+.size-table td {
+    padding: var(--space-md) var(--space-lg);
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.size-table th {
+    background: var(--charcoal);
+    color: var(--white);
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 13px;
+}
+
+.size-table td {
+    background: var(--white);
+    color: var(--text-light);
+}
+
+.size-table tr:nth-child(even) td {
+    background: var(--off-white);
+}
+
+.size-table td strong {
+    color: var(--charcoal);
+}
+
+/* ============================================
+   CONTACT PAGE
+   ============================================ */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: var(--space-3xl);
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.contact-info .content-section {
+    margin-bottom: var(--space-xl);
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+}
+
+.contact-method {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
+.contact-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-method h4 {
+    color: var(--charcoal);
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.contact-method p {
+    color: var(--text-light);
+    font-size: 15px;
+    margin: 0;
+}
+
+.social-section h4 {
+    color: var(--charcoal);
+    margin-bottom: var(--space-md);
+    font-size: 14px;
+}
+
+.social-section .social-links {
+    margin-top: 0;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    background: var(--off-white);
+    padding: var(--space-2xl);
+    border: 1px solid var(--border);
+}
+
+.contact-form h3 {
+    color: var(--charcoal);
+    margin-bottom: var(--space-xl);
+}
+
+.contact-form .form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.contact-form label {
+    display: block;
+    color: var(--charcoal);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: var(--space-xs);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: var(--space-md);
+    border: 1px solid var(--border);
+    background: var(--white);
+    font-size: 15px;
+    transition: border-color var(--transition);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--red);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234A4A4A'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+}
