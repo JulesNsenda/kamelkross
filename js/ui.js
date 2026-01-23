@@ -11,6 +11,7 @@ const UI = {
         this.initMobileMenu();
         this.initToastContainer();
         this.initScrollHeader();
+        this.initScrollReveal();
     },
 
     /**
@@ -67,6 +68,28 @@ const UI = {
 
             lastScroll = currentScroll;
         });
+    },
+
+    /**
+     * Initialize scroll reveal animations
+     */
+    initScrollReveal() {
+        const reveals = document.querySelectorAll('.reveal');
+        if (reveals.length === 0) return;
+
+        const revealOnScroll = () => {
+            reveals.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', this.debounce(revealOnScroll, 10));
+        revealOnScroll(); // Check on load
     },
 
     /**
