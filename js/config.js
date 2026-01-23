@@ -7,7 +7,7 @@ const CONFIG = {
     // Store Information
     store: {
         name: 'Kamel Kross',
-        tagline: 'Wear the Culture',
+        tagline: 'No Easy Path',
         currency: 'ZAR',
         currencySymbol: 'R'
     },

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kamel Kross - Premium streetwear and branded apparel. Shop our collection of t-shirts, caps, and more.">
-    <title>Kamel Kross | Wear the Culture</title>
+    <title>Kamel Kross | No Easy Path</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +18,32 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐪</text></svg>">
 </head>
 <body>
+    <!-- Splash Screen -->
+    <div class="splash-screen" id="splash">
+        <div class="splash-logo">
+            <div class="splash-logo-line">
+                <span class="splash-letter">K</span>
+                <span class="splash-letter">A</span>
+                <span class="splash-letter">M</span>
+                <span class="splash-letter">E</span>
+                <span class="splash-letter">L</span>
+            </div>
+            <div class="splash-logo-line">
+                <span class="splash-letter">K</span>
+                <span class="splash-letter">R</span>
+                <span class="splash-letter">O</span>
+                <span class="splash-letter">S</span>
+                <span class="splash-letter">S</span>
+            </div>
+        </div>
+        <p class="splash-tagline">No Easy Path</p>
+        <div class="splash-loader"></div>
+    </div>
+
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo">Kamel Kross</a>
+            <a href="index.html" class="logo"><img src="images/logo.jpeg" alt="Kamel Kross"></a>
 
             <nav class="nav">
                 <ul class="nav-links">
@@ -67,7 +89,7 @@
         <div class="container">
             <div class="hero-content">
                 <span class="hero-badge">New Collection</span>
-                <h1>Wear the <span class="text-gradient">Culture</span></h1>
+                <h1>No Easy <span class="text-gradient">Path</span></h1>
                 <p>Premium streetwear that tells your story. Bold designs, quality craftsmanship, authentic expression.</p>
                 <div class="hero-actions">
                     <a href="products.html" class="btn btn-primary btn-lg">Shop Now</a>
@@ -122,35 +144,35 @@
     </section>
 
     <!-- Features Section -->
-    <section class="section">
+    <section class="section features-section">
         <div class="container">
-            <div class="grid grid-3" style="text-align: center;">
-                <div>
-                    <div style="width: 60px; height: 60px; background: rgba(212, 168, 83, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-lg);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--primary)">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#C8384A">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                         </svg>
                     </div>
-                    <h4 style="margin-bottom: var(--space-sm);">Premium Quality</h4>
-                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Crafted with the finest materials for lasting comfort and style</p>
+                    <h4>Premium Quality</h4>
+                    <p>Crafted with the finest materials for lasting comfort and style</p>
                 </div>
-                <div>
-                    <div style="width: 60px; height: 60px; background: rgba(212, 168, 83, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-lg);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--primary)">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#C8384A">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </div>
-                    <h4 style="margin-bottom: var(--space-sm);">Fast Delivery</h4>
-                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Quick and reliable shipping to your doorstep nationwide</p>
+                    <h4>Fast Delivery</h4>
+                    <p>Quick and reliable shipping to your doorstep nationwide</p>
                 </div>
-                <div>
-                    <div style="width: 60px; height: 60px; background: rgba(212, 168, 83, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto var(--space-lg);">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="var(--primary)">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="#C8384A">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                         </svg>
                     </div>
-                    <h4 style="margin-bottom: var(--space-sm);">Secure Payments</h4>
-                    <p style="color: var(--text-secondary); font-size: var(--font-size-sm);">Shop with confidence with our secure payment options</p>
+                    <h4>Secure Payments</h4>
+                    <p>Shop with confidence with our secure payment options</p>
                 </div>
             </div>
         </div>
@@ -161,7 +183,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="logo">Kamel Kross</span>
+                    <span class="logo"><img src="images/logo.jpeg" alt="Kamel Kross"></span>
                     <p>Premium streetwear and branded apparel. Express yourself with confidence.</p>
                     <div class="social-links" style="margin-top: var(--space-lg);">
                         <a href="#" class="social-link" aria-label="Instagram">
@@ -219,7 +241,21 @@
     <script src="js/products.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/ui.js"></script>
+    <script src="js/transitions.js"></script>
     <script>
+        // Splash screen animation
+        (function() {
+            const splash = document.getElementById('splash');
+            // Hide splash after animation completes (2.5 seconds)
+            setTimeout(() => {
+                splash.classList.add('hide');
+                // Remove from DOM after fade out
+                setTimeout(() => {
+                    splash.style.display = 'none';
+                }, 600);
+            }, 2500);
+        })();
+
         // Update year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
