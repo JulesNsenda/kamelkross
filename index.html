@@ -124,14 +124,14 @@
 
             <div class="categories-grid reveal reveal-delay-1">
                 <a href="products.html?category=t-shirts" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="T-Shirts">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600" alt="T-Shirts" loading="lazy">
                     <div class="category-content">
                         <h3>T-Shirts</h3>
                         <span>View Collection</span>
                     </div>
                 </a>
                 <a href="products.html?category=caps" class="category-card">
-                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600" alt="Caps">
+                    <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?w=600" alt="Caps" loading="lazy">
                     <div class="category-content">
                         <h3>Caps</h3>
                         <span>View Collection</span>
@@ -261,14 +261,17 @@
         // Splash screen animation
         (function() {
             const splash = document.getElementById('splash');
-            // Hide splash after animation completes (2.5 seconds)
+            // Faster splash on mobile (1.5s), normal on desktop (2s)
+            const isMobile = window.innerWidth <= 768;
+            const splashDuration = isMobile ? 1500 : 2000;
+
             setTimeout(() => {
                 splash.classList.add('hide');
                 // Remove from DOM after fade out
                 setTimeout(() => {
                     splash.style.display = 'none';
-                }, 600);
-            }, 2500);
+                }, 500);
+            }, splashDuration);
         })();
 
         // Update year

@@ -22,17 +22,49 @@ const UI = {
         const navLinks = document.querySelector('.nav-links');
 
         if (toggle && navLinks) {
+            // Create backdrop element
+            let backdrop = document.querySelector('.menu-backdrop');
+            if (!backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.className = 'menu-backdrop';
+                document.body.appendChild(backdrop);
+            }
+
+            const closeMenu = () => {
+                navLinks.classList.remove('active');
+                toggle.classList.remove('active');
+                backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            const openMenu = () => {
+                navLinks.classList.add('active');
+                toggle.classList.add('active');
+                backdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
             toggle.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                toggle.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
+
+            // Close menu when clicking backdrop
+            backdrop.addEventListener('click', closeMenu);
 
             // Close menu when clicking any link (including dropdown items)
             navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    toggle.classList.remove('active');
-                });
+                link.addEventListener('click', closeMenu);
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
             });
         }
     },

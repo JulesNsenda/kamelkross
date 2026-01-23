@@ -322,7 +322,11 @@ h4 { font-size: 1.25rem; }
 
 .cart-icon {
     position: relative;
-    padding: var(--space-sm);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--charcoal);
     transition: color var(--transition);
 }
@@ -332,8 +336,8 @@ h4 { font-size: 1.25rem; }
 }
 
 .cart-icon svg {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
 }
 
 .cart-count {
@@ -362,20 +366,58 @@ h4 { font-size: 1.25rem; }
 .menu-toggle {
     display: none;
     flex-direction: column;
-    gap: 5px;
-    padding: var(--space-sm);
+    justify-content: center;
+    gap: 6px;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
 }
 
 .menu-toggle span {
-    width: 20px;
+    width: 24px;
     height: 2px;
     background: var(--charcoal);
-    transition: all var(--transition);
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile menu backdrop */
+.menu-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.menu-backdrop.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 @media (max-width: 768px) {
+    .menu-backdrop {
+        display: block;
+    }
+
     .menu-toggle {
         display: flex;
+        z-index: 1001;
     }
 
     .nav-links {
@@ -391,7 +433,8 @@ h4 { font-size: 1.25rem; }
         gap: 0;
         opacity: 0;
         visibility: hidden;
-        transition: all var(--transition);
+        transition: all 0.3s ease;
+        z-index: 999;
     }
 
     .nav-links.active {
@@ -409,6 +452,14 @@ h4 { font-size: 1.25rem; }
         font-size: 18px;
         padding: var(--space-lg) 0;
         display: block;
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-link::after {
+        display: none;
     }
 
     .nav-dropdown-menu {
@@ -1880,8 +1931,8 @@ body.page-leaving {
 }
 
 .social-link {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
     display: flex;
@@ -2224,6 +2275,80 @@ body.page-leaving {
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================
+   MOBILE OPTIMIZATIONS
+   ============================================ */
+@media (max-width: 768px) {
+    /* Increase base font for readability */
+    body {
+        font-size: 16px;
+    }
+
+    /* Larger touch targets for filter tags */
+    .filter-tag {
+        padding: 10px 16px;
+        font-size: 13px;
+    }
+
+    /* Larger form inputs */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 14px 16px;
+        font-size: 16px; /* Prevents iOS zoom on focus */
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    /* Larger product category text */
+    .product-category {
+        font-size: 12px;
+    }
+
+    /* Better cart item styling */
+    .cart-item-details h3 {
+        font-size: 15px;
+    }
+
+    .cart-item-variant {
+        font-size: 14px;
+    }
+
+    /* Disable heavy animations on mobile */
+    .hero-bg img {
+        animation: none;
+        transform: scale(1.05);
+    }
+
+    .hero-badge::before {
+        animation: none;
+    }
+
+    /* Faster splash for mobile */
+    .splash-letter {
+        animation-duration: 0.4s;
+    }
+
+    .splash-loader::after {
+        animation-duration: 1s;
+    }
+
+    /* Better option buttons */
+    .option-btn {
+        min-width: 52px;
+        height: 52px;
+        font-size: 14px;
+    }
+
+    /* Responsive sidebar widths */
+    .cart-summary,
+    .order-summary {
+        position: static;
+    }
+}
 
 /* ============================================
    CONTENT PAGES (Shipping, Returns, etc.)
