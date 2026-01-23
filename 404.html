@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Page not found - Kamel Kross">
+    <title>Page Not Found | Kamel Kross</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="apple-touch-icon" href="images/logo.jpeg">
+    <meta name="theme-color" content="#C8384A">
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-xl);
+        }
+        .error-content {
+            max-width: 500px;
+        }
+        .error-code {
+            font-family: var(--font-display);
+            font-size: clamp(6rem, 20vw, 12rem);
+            font-weight: 700;
+            line-height: 1;
+            color: var(--light-gray);
+            margin-bottom: var(--space-lg);
+        }
+        .error-code span {
+            color: var(--red);
+        }
+        .error-content h1 {
+            margin-bottom: var(--space-md);
+            color: var(--charcoal);
+        }
+        .error-content p {
+            color: var(--text-light);
+            margin-bottom: var(--space-xl);
+        }
+        .error-actions {
+            display: flex;
+            gap: var(--space-md);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo"><img src="images/logo.jpeg" alt="Kamel Kross"></a>
+
+            <nav class="nav">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-dropdown">
+                        <a href="products.html" class="nav-link nav-dropdown-toggle">
+                            Shop
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </a>
+                        <div class="nav-dropdown-menu">
+                            <a href="products.html">All Products</a>
+                            <a href="products.html?category=t-shirts">T-Shirts</a>
+                            <a href="products.html?category=caps">Caps</a>
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="cart.html" class="cart-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                        </svg>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Error Content -->
+    <main class="error-page">
+        <div class="error-content">
+            <div class="error-code">4<span>0</span>4</div>
+            <h1>Page Not Found</h1>
+            <p>Oops! The page you're looking for doesn't exist or has been moved. Let's get you back on track.</p>
+            <div class="error-actions">
+                <a href="index.html" class="btn btn-primary">Go Home</a>
+                <a href="products.html" class="btn btn-secondary">Browse Shop</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/transitions.js"></script>
+</body>
+</html>

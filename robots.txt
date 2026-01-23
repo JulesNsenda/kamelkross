@@ -1,0 +1,11 @@
+# Kamel Kross - robots.txt
+# https://kamelkross.com
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kamelkross.com/sitemap.xml
+
+# Disallow admin/private areas (if any)
+Disallow: /docs/
